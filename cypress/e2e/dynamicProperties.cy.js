@@ -17,14 +17,20 @@ describe('Validate the buttons', () => {
     it('Validate the dynamic properties', async () => {
         cy.get('#enableAfter').should('be.disabled');
         // async function myFunction(){
-        await waitFiveSeconds(8000);
+        // await waitFiveSeconds(8000);
         // };
         // myFunction();
     });
 
     it('Click on "Will enable 5 seconds" button', () => {
-        // cy.wait(5000);
+        cy.wait(5000);
         cy.get('#enableAfter').click({force: true});
         cy.get('#enableAfter').should('be.enabled');
+    });
+
+    it('Validate color change text color', () => {
+        // cy.wait(5000);
+        cy.get('#colorChange').should('have.class', 'text-danger');
+        cy.get('#visibleAfter').should('contain', 'Visible After 5 Seconds');
     });
 });
